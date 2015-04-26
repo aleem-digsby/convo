@@ -1,0 +1,21 @@
+/* CSS declarations go here */
+a
+{
+	text-decoration: none;
+}
+#marg
+{
+	margin-right: 2%;
+}
+#pad
+{
+	margin-top: 2%;
+}
+html
+{
+	background-color: #00BCD4;
+}
+#header2
+{
+	background-color: #00BCD4;
+}

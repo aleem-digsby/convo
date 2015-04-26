@@ -1,0 +1,121 @@
+<head>
+  <title>convo</title>
+</head>
+
+<body>
+
+</body>
+
+<template name="header">
+	<div class = "navbar navbar-default">
+		<div class ="container-fluid">
+			<div class ="navbar-header">
+				<a class="navbar-brand" href="#">Convo</a>
+			</div>
+			<form class ="navbar-form navbar-right" id="signinForm" method ="post" action = "/lobby">
+				{{#if loginError}}
+					<p style = "color:red;">Incorrect username or password</p>
+				{{/if}}
+				<button type = "submit" class = "btn btn-default">Login</button>
+				<div class ="form-group">
+					<input type ="text" class="form-control" placeholder = "username" name="loginUsername">
+					<input type ="password" class="form-control" placeholder = "password" name="loginPassword">
+				</div>
+			</form>
+		</div>
+	</div>
+</template>
+<template name = "header2" id = "header2">
+	<div class = "navbar navbar-default" id = "header2">
+		<div class ="container-fluid" id = "header2">
+			<div class ="navbar-header" id = "header2">
+				<a class="navbar-brand" href="#">Convo</a>
+		
+			</div>
+			<div class="dropdown navbar-right">
+					<a href ="#" class = "dropdown-toggle" data-toggle = "dropdown" role="button" aria-expanded="false">{{firstName}} {{lastName}}</a>
+					<ul class = "dropdown-menu" role ="menu">
+						<li><a href ="#" id = "logout">Logout</a></li>
+						
+					</ul>
+				</div>
+		</div>
+	</div>
+</template>
+<template name = "signup">
+{{>header}}
+	<div class = "jumbotron">
+		<h1>Not a Member?</h1>
+		<div class = "container-fluid">
+			<div class = "col-md-4 col-md-offset-4">
+				<h2>Sign Up!</h2>
+				<form  id = "signupForm" >	
+					<div class = "form-group">	
+						<input type ="text" class="form-control" placeholder = "First Name" name= "signupFirstName">	
+						<input type ="text" class="form-control" placeholder = "Last Name" name= "signupLastName">	
+					</div>
+					<div class ="form-group">
+						<input type ="text" class="form-control" placeholder = "username" name= "signupUsername">
+						<input type ="password" class="form-control" placeholder = "password" name= "signupPassword">
+					</div>
+					<button type = "submit" class = "btn btn-default">Sign Up</button>	
+				</form>
+			</div>
+		</div>
+	</div>
+</template>
+<template name ="lobby">
+	{{> header2}}
+	<div class = "container-fluid">
+		<div class = row>
+			<h1 class ="col-md-4 col-md-offset-4">Lobby</h1>
+		</div>
+		<div class = "row">
+			<div class ="pull-left col-md-6">
+				<textarea class ="form-control bcolor" rows="20" readonly>{{#each messages}}{{user}}: {{message}} &#10;{{/each}}</textarea>
+			</div>
+			<div class =" pull-right well col-md-4" id="marg" >
+			<h2 style = "text-align:center;">Online</h2>
+				<p>
+					{{#each current}}
+						<a href ="#" id="{{userName}}">{{username}}</a> &#10;
+					{{/each}}
+				</p>
+			</div>
+		</div>
+		<div class = "row" id ="pad">
+			<form id ="shareForm">
+				<div class = "col-md-8">
+					<textarea type = "text" class ="form-control" name = "message"></textarea>
+				</div>	
+				<div class = "col-md-2 ">
+					<button type = "submit" class = "btn btn-default" id = "share">share</button>
+				</div>
+			</form>
+		</div>
+		<div class ="btn-group" role ="group" aria-label="...">
+		<button class="btn btn-primary" type = "button"  aria-expanded="false" aria-controls="collapseExample" style = "border:none;outline:none; width:200px;text-align:left">
+  	{{userName}}
+		</button>
+		<button class="btn btn-primary" type = "button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style = "border:none;outline:none;width:40px;">
+  		-
+		</button>
+		<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style = "border:none;outline:none;width:40px;">
+			 x
+		</button>
+		</div>
+		<div class="collapse" id="collapseExample" style = "width:280px">
+  			<div class="well">
+   				 ...
+   				 <div style ="position:relative;bottom:-20px;">
+   				 <input type = "text" >
+   				 <button type= "submit">send</button>
+   				 </div>
+  			</div>
+
+		</div>
+	</div>
+</template>
+<template name ="notlobby">
+<h1>IT NOTWORKS</h1>
+</template>

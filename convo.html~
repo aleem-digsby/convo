@@ -1,0 +1,15 @@
+<head>
+  <title>convo</title>
+</head>
+
+<body>
+  <h1>Welcome to Meteor!</h1>
+
+  {{> header}}
+</body>
+
+<template name="header">
+  <div class = "page-header">
+<h1>Convo</h1>
+</div>
+</template>
